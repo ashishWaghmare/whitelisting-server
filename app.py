@@ -9,7 +9,7 @@ server_base_class = socketserver.TCPServer
 
 class GetHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
-        print(self.headers)
+        print(self.headers['X-Forwarded-For'])
         http.server.SimpleHTTPRequestHandler.do_GET(self)
 
 handler = GetHandler
