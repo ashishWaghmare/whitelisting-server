@@ -9,7 +9,10 @@ server_base_class = socketserver.TCPServer
 
 class GetHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
-        print(self.headers['X-Forwarded-For'])
+        ipAdress=self.headers['X-Forwarded-For']
+        if ipAdress != '14.143.243.78':
+            self.finish()
+            self.connection.close()
         http.server.SimpleHTTPRequestHandler.do_GET(self)
 
 handler = GetHandler
