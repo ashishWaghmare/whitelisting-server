@@ -12,6 +12,6 @@ class LocalTCPServer(socketserver.TCPServer):
         return (client_address[0] == '14.143.243.78')
 handler = http.server.SimpleHTTPRequestHandler
 PORT = int(os.environ.get("PORT", 17995))
-httpd = LocalTCPServer(("",args.port), handler)
+httpd = LocalTCPServer(("",PORT), handler)
 print("serving at port::",PORT)
 httpd.serve_forever()
